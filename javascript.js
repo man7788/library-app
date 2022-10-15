@@ -1,12 +1,11 @@
-const tableTitle = document.querySelector('tbody tr:nth-child(1)>td');
-const tableAuthor = document.querySelector('tbody tr:nth-child(2)>td');
-const tablePages = document.querySelector('tbody tr:nth-child(3)>td');
-const tableRead = document.querySelector('tbody tr:nth-child(4)>td');
-
+const cardTitle = document.querySelector('.card div:nth-child(1)');
+const cardAuthor = document.querySelector('.card div:nth-child(2)');
+const cardPages = document.querySelector('.card div:nth-child(3)');
+const cardRead = document.querySelector('.card div:nth-child(4)');
 
 let myLibrary = [];
 
-console.log(tableTitle.textContent);
+console.log(cardTitle.textContent);
 
 function Book() {
   this.info = function() {
@@ -31,24 +30,25 @@ function addBookToLibrary() {
 
 function displayInfo() {
   let book;
-  for(i = 0;i < 1;i++) {
+  for(i = 0;i < myLibrary.length;i++) {
     book = myLibrary[i];
   }
   let bookTitle = book.title;
   let bookAuthor = book.author;
   let bookPages = book.pages;
   let bookRead= book.read;
-  tableTitle.textContent = bookTitle;
-  tableAuthor.textContent = bookAuthor;
-  tablePages.textContent = bookPages;
-  tableRead.textContent = bookRead;
-  // return bookTitle;
-  // return book;
+  cardTitle.textContent += bookTitle;
+  cardAuthor.textContent += bookAuthor;
+  cardPages.textContent += bookPages;
+  cardRead.textContent += bookRead;
 }
 
+// console.log(myLibrary);
 addBookToLibrary();
+displayInfo();
 // addBookToLibrary();
 // addBookToLibrary();
-console.log(myLibrary);
-console.log(displayInfo());
+// addBookToLibrary();
+// addBookToLibrary();
+// console.log(displayInfo());
 // console.log(myLibrary[0]);
