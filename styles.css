@@ -24,10 +24,16 @@ body {
 
 .main-content {
   background: whitesmoke;
-  grid-row: 2 / 4;
+  grid-row: 2 / 3;
   display: grid;
-  grid-template-rows: 6fr 1fr;
+  grid-template-rows: 4fr 1fr;
+
+}
+
+.card-container {
+  display: grid;
   grid-template-columns: repeat(auto-fit,  minmax(250px, 1fr));
+  align-content: flex-start;
 }
 
 .card {
@@ -35,8 +41,14 @@ body {
   height: 200px;
 }
 
-.button-container {
+.input-container {
   grid-row: 2 / 3;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 

@@ -1,54 +1,44 @@
+
+let myLibrary = [];
+
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
+}
+
+Book.prototype.info = function() {
+  return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+}
+
+let addButton = document.querySelector('.add-button');
+addButton.addEventListener('click', addBookToLibrary);
+
+function addBookToLibrary() {
+  const userTitle = document.querySelector('#title').value;
+  const userAuthor = document.querySelector('#author').value;
+  const userPages = document.querySelector('#pages').value;
+  const userRead = document.querySelector('#read').value;
+  let bookObj = new Book(userTitle, userAuthor, userPages, userRead);
+  myLibrary.push(bookObj);
+  displayInfo();
+}
+
+
 const cardTitle = document.querySelector('.card div:nth-child(1)');
 const cardAuthor = document.querySelector('.card div:nth-child(2)');
 const cardPages = document.querySelector('.card div:nth-child(3)');
 const cardRead = document.querySelector('.card div:nth-child(4)');
-
-let myLibrary = [];
-
-console.log(cardTitle.textContent);
-
-function Book() {
-  this.info = function() {
-    let info = `${title} by ${author}, ${pages} pages, ${read}`
-    return info;
-  }
-}
-
-function addBookToLibrary() {
-  userTitle = prompt("Book name?");
-  userAuthor = prompt("Author's name?");
-  userPages = prompt("How many page?");
-  userRead = prompt('Have you read it? (Yes/No)');
-  let bookObj = {
-    title: userTitle,
-    author: userAuthor,
-    pages: userPages,
-    read: userRead,
-  }
-  myLibrary.push(bookObj);
-}
 
 function displayInfo() {
   let book;
   for(i = 0;i < myLibrary.length;i++) {
     book = myLibrary[i];
   }
-  let bookTitle = book.title;
-  let bookAuthor = book.author;
-  let bookPages = book.pages;
-  let bookRead= book.read;
-  cardTitle.textContent += bookTitle;
-  cardAuthor.textContent += bookAuthor;
-  cardPages.textContent += bookPages;
-  cardRead.textContent += bookRead;
+  cardTitle.textContent += book.title;
+  cardAuthor.textContent += book.author;
+  cardPages.textContent += book.pages;
+  cardRead.textContent += book.read;
 }
 
-// console.log(myLibrary);
-addBookToLibrary();
-displayInfo();
-// addBookToLibrary();
-// addBookToLibrary();
-// addBookToLibrary();
-// addBookToLibrary();
-// console.log(displayInfo());
-// console.log(myLibrary[0]);
