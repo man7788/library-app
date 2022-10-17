@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -26,7 +27,7 @@ body {
   background: whitesmoke;
   grid-row: 2 / 3;
   display: grid;
-  grid-template-rows: 4fr 1fr;
+  grid-template-rows: 3fr 1fr;
 
 }
 
