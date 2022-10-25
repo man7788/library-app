@@ -1,16 +1,32 @@
 
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  info() {
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+  }
 }
 
-Book.prototype.info = function() {
-  return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-}
+// let jeff = new Book ('yes', 'no', 'ok', 'fine');
+// console.log(jeff.info());
+
+// function Book(title, author, pages, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+// }
+
+// Book.prototype.info = function() {
+//   return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+// }
 
 let addButton = document.querySelector('.add-button');
 addButton.addEventListener('click', addBookToLibrary);
@@ -18,7 +34,7 @@ addButton.addEventListener('click', addBookToLibrary);
 let newBookButton = document.querySelector('.new-button');
 newBookButton.addEventListener('click', () => {
   if (document.querySelector('form').style.display === 'none') {
-    document.querySelector('form').style.display = 'block';
+    document.querySelector('form').style.display = 'grid';
   }
 })
 
