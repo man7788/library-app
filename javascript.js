@@ -1,4 +1,3 @@
-
 let myLibrary = [];
 
 class Book {
@@ -28,6 +27,17 @@ class Book {
 //   return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
 // }
 
+function checkValid() {
+  const inpObj = document.getElementById("input");
+  if (inpObj.checkValidity()) {
+    let formStatus = inpObj.checkValidity();
+    return formStatus;
+  } else {
+    let formStatus = inpObj.checkValidity();
+    return formStatus;
+  }
+}
+
 let addButton = document.querySelector('.add-button');
 addButton.addEventListener('click', addBookToLibrary);
 
@@ -38,15 +48,23 @@ newBookButton.addEventListener('click', () => {
   }
 })
 
-function addBookToLibrary() {
-  const inputTitle = document.querySelector('#title').value;
-  const inputAuthor = document.querySelector('#author').value;
-  const inputPages = document.querySelector('#pages').value;
-  const inputRead = document.querySelector('#read').value;
-  let bookObj = new Book(inputTitle, inputAuthor, inputPages, inputRead);
-  myLibrary.push(bookObj);
-  document.querySelector('.card-container').replaceChildren();
-  loopBookList();
+function addBookToLibrary(event) {
+  const trigger = checkValid();
+  if (trigger === true) {
+    event.preventDefault();
+    const inputTitle = document.querySelector('#title').value;
+    const inputAuthor = document.querySelector('#author').value;
+    const inputPages = document.querySelector('#pages').value;
+    let inputRead = document.querySelector('#read');
+    inputRead = inputRead.options[inputRead.selectedIndex].textContent;
+
+    let bookObj = new Book(inputTitle, inputAuthor, inputPages, inputRead);
+    myLibrary.push(bookObj);
+    document.querySelector('.card-container').replaceChildren();
+    loopBookList();
+  } else { 
+    return;
+  }
 }
 
 function loopBookList() {
@@ -76,6 +94,7 @@ function addCard(title, author, pages, read, attribute) {
   cardAuthor.textContent = 'Author: ' + author;
   cardPages.textContent = 'Pages: ' + pages;
   cardRead.textContent = 'Read: ' + read;
+
   removeButton.textContent = 'Remove';
   removeButton.setAttribute('id', attribute);
   removeButton.addEventListener('click', (e) => {
@@ -83,13 +102,14 @@ function addCard(title, author, pages, read, attribute) {
     document.querySelector('.card-container').replaceChildren();
     loopBookList();
   })
+
   changeButton.textContent = 'Read Status';
   changeButton.setAttribute('id', attribute);
   changeButton.addEventListener('click', (e) => {
-    if (myLibrary[e.target.id].read === 'yes') {
-      myLibrary[e.target.id].read = 'no';
-    } else if (myLibrary[e.target.id].read === 'no') {
-      myLibrary[e.target.id].read = 'yes';
+    if (myLibrary[e.target.id].read === 'Yes') {
+      myLibrary[e.target.id].read = 'No';
+    } else if (myLibrary[e.target.id].read === 'No') {
+      myLibrary[e.target.id].read = 'Yes';
     }
     document.querySelector('.card-container').replaceChildren();
     loopBookList();
